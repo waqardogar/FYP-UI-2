@@ -1,0 +1,155 @@
+{% extends "Dashboard.html" %}
+{% load static %}
+{% block content %}
+<!-- <link rel="stylesheet" href="{% static 'css/drop.css' %}"> -->
+<style>
+        #map { 
+             width: 100%;
+             height: 100vh;
+             float: right; 
+             /* margin-right: 5px; */
+             display: flex;
+            }
+            @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&family=Tilt+Neon&display=swap');
+  .sidenav {
+  height: 100%; /* 100% Full-height */
+  width: 0; /* 0 width - change this with JavaScript */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Stay on top */
+  top: 0;
+  left: 0;
+  background-color: #ffffff; /* Black*/
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 60px; /* Place content 60px from the top */
+  transition: 0.5s; /* 0.5 second transition effect to slide in the sidenav */
+}
+.but{
+  position: absolute;
+}
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  /* padding: 20px; */
+}
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.but{
+  margin-left: 20px;
+  margin-top: 10px;
+}
+.footer{
+  position: absolute;
+  margin-top: 550px;
+  margin-left: 48%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.b1{
+  border: 1px solid black;
+  width: 50px;
+  height: 50px;
+}
+
+            
+</style>
+
+        <div id="map"></div>
+
+
+        <div class="but">
+                <div class="btn btn-primary" onclick="openNav()" id="open"><i class="fa-solid fa-bars" style="color: #ffffff;"></i></div>
+              </div>
+                <div id="mySidenav" class="sidenav">
+                  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+              
+              <br>
+              <br>
+              <h1>Mission Plan</h1>
+              <div class="path_planning">
+                <select name="OverLaping" id="overlap">
+                  <option selected>OverLaping</option>
+                  <option value=".10">10%</option>
+                  <option value=".20">20%</option>
+                  <option value=".30">30%</option>
+                  <option value=".40">40%</option>
+                  <option value=".50">50%</option>
+                  <option value=".60">60%</option>
+                  <option value=".70">70%</option>
+                  <option value=".80">80%</option>
+                  <option value=".90">90%</option>
+                </select>
+              
+                <select name="ar" id="ar">
+                  <option selected>Ascpect Ration</option>
+                  <option value="1:1">1:1</option>
+                  <option value="4:3">4:3</option>
+                  <option value="16:9">16:9</option>
+                </select>
+              <br>
+              <br>
+                <select name="fa" id="fa">
+                  <option selected>Flight Altitude</option>
+                  <option value="40">40 feet</option>
+                  <option value="50">50feet</option>
+                  <option value="60">60feet</option>
+                  <option value="70">70feet</option>
+                </select>
+                <select name="tt" id="tt">
+                  <option selected>Tree Traversal</option>
+                  <option value="DFS">DFS</option>
+                  <option value="BFS">BFS</option>
+                </select>
+              <br>
+              <br>
+              <div class="">
+                <button class="btn btn-primary" style="margin-left: 70px;" onclick="mission_plan()">Submit</button>
+              </div>
+              </div>
+                </div>
+              <footer class="footer ">
+              
+               <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                <div class="btn-group mr-2" role="group" aria-label="First group">
+                  <a href="{% url 'map' %}"><button type="button"  class="btn1 btn btn-primary"> <i class="fa-regular fa-map " style="color: #ffffff;"></i></button></a>
+                  <a href="{% url 'map2' %}">
+                  <button  type="button" class="btn2 btn btn-primary"> <i class="fa-solid fa-person" style="color: #ffffff;"></i></button>
+                </a>
+                </div>
+               </div>
+              </footer>
+<script src="{% static 'googlemaps/java.js' %}"></script>
+{% endblock content %}
+
+
+
+
+
+
+
+
+
+
+
